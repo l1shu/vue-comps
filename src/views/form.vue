@@ -19,6 +19,7 @@ import iForm from "../components/form/form.vue";
 import iFormItem from "../components/form/form-item.vue";
 import iInput from "../components/input/input.vue";
 export default {
+  // name: '',
   components: { iForm, iFormItem, iInput },
   data() {
     return {
