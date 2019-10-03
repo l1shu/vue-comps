@@ -23,7 +23,7 @@ export default new Router({
     },
     {
       path: '/alert',
-      // component: () => import('./views/alert.vue')
+      component: () => import('./views/alert.vue')
     },
     {
       path: '/table-render',
