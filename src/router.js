@@ -27,7 +27,7 @@ export default new Router({
     },
     {
       path: '/table-render',
-      // component: () => import('./views/table-render.vue')
+      component: () => import('./views/table-render.vue')
     },
     {
       path: '/table-slot',
