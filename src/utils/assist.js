@@ -73,10 +73,53 @@ function findBrothersComponents (context, componentName, exceptMe = true) {
   return res
 }
 
+function typeOf (obj) {
+  let toString = Object.prototype.toString
+  let map = {
+    '[object Boolean]'  : 'boolean',
+    '[object Number]'   : 'number',
+    '[object String]'   : 'string',
+    '[object Function]' : 'function',
+    '[object Array]'    : 'array',
+    '[object Date]'     : 'date',
+    '[object RegExp]'   : 'regExp',
+    '[object Undefined]': 'undefined',
+    '[object Null]'     : 'null',
+    '[object Object]'   : 'object'
+  }
+  return map[toString.call(obj)]
+}
+
+// deepCopy
+function deepCopy (data) {
+  let t = typeOf(data)
+  let o
+
+  if (t === 'array') {
+    o = []
+  } else if (t === 'object') {
+    o = {}
+  } else {
+    return data
+  }
+
+  if (t === 'array') {
+    data.forEach(item => {
+      o.push(deepCopy(item))
+    })
+  } else if (t === 'object') {
+    for (let key in data) {
+      o[key] = deepCopy(data[key])
+    }
+  }
+  return o
+}
+
 export {
   findComponentUpward,
   findComponentsUpward,
   findComponentDownward,
   findComponentsDownward,
-  findBrothersComponents
+  findBrothersComponents,
+  deepCopy
 }
